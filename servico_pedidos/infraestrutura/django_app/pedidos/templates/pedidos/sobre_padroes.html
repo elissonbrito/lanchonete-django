@@ -1,0 +1,57 @@
+{% extends "pedidos/base.html" %}
+
+{% block title %}Padrões de Projeto Utilizados{% endblock %}
+
+{% block content %}
+<h2 style="margin-bottom:20px;">📐 Padrões de Projeto Utilizados</h2>
+<p style="margin-bottom:20px; color:#555;">
+    Esta aplicação implementa <strong>4 padrões de projeto</strong> de forma integrada
+    em um sistema de pedidos de lanchonete.
+</p>
+
+<div class="card">
+    <div class="pattern-box">
+        <h3>1. Singleton — <code>singleton.py</code></h3>
+        <p><strong>Categoria:</strong> Criacional</p>
+        <p><strong>Problema:</strong> Precisamos de um único ponto de configurações globais da lanchonete (nome, taxa de entrega, tempo médio de preparo). Se cada parte do código criar sua própria instância, pode haver inconsistência.</p>
+        <p><strong>Solução:</strong> A classe <code>ConfiguracaoLanchonete</code> garante que só existe <em>uma instância</em> em toda a aplicação. Qualquer chamada retorna sempre o mesmo objeto.</p>
+        <p><strong>Onde ver:</strong> <code>views.py</code>, funções <code>home()</code> e <code>sobre_padroes()</code>.</p>
+    </div>
+
+    <div class="pattern-box">
+        <h3>2. Factory Method — <code>factory.py</code></h3>
+        <p><strong>Categoria:</strong> Criacional</p>
+        <p><strong>Problema:</strong> Existem três tipos de pedido (Balcão, Entrega, Mesa), cada um com comportamentos diferentes (ex: taxa extra na entrega). Usar <code>if/elif</code> espalhado pelo código tornaria a manutenção difícil.</p>
+        <p><strong>Solução:</strong> A classe <code>FabricaPedido</code> centraliza a criação. O código cliente apenas chama <code>FabricaPedido.criar(tipo=...)</code> e recebe o objeto certo.</p>
+        <p><strong>Onde ver:</strong> <code>views.py</code>, função <code>novo_pedido()</code>.</p>
+    </div>
+
+    <div class="pattern-box">
+        <h3>3. Observer — <code>observer.py</code></h3>
+        <p><strong>Categoria:</strong> Comportamental</p>
+        <p><strong>Problema:</strong> Quando o status de um pedido muda, múltiplas partes do sistema precisam ser notificadas (cozinha, cliente, etc.). Acoplar isso diretamente nas views tornaria o código rígido.</p>
+        <p><strong>Solução:</strong> O <code>GerenciadorStatus</code> mantém uma lista de observadores. Quando <code>notificar_todos()</code> é chamado, todos os observadores registrados reagem automaticamente, sem que a view precise saber quem são.</p>
+        <p><strong>Onde ver:</strong> <code>views.py</code>, funções <code>novo_pedido()</code> e <code>atualizar_status()</code>.</p>
+    </div>
+
+    <div class="pattern-box">
+        <h3>4. Strategy — <code>strategy.py</code></h3>
+        <p><strong>Categoria:</strong> Comportamental</p>
+        <p><strong>Problema:</strong> O sistema aceita múltiplas formas de pagamento (Dinheiro, Cartão, Pix), cada uma com sua lógica de processamento. Usar condicionais (<code>if pagamento == "pix": ...</code>) viola o princípio aberto/fechado.</p>
+        <p><strong>Solução:</strong> Cada forma de pagamento é uma classe separada que implementa a interface <code>FormaPagamento</code>. A função <code>obter_forma_pagamento()</code> seleciona a estratégia certa em tempo de execução.</p>
+        <p><strong>Onde ver:</strong> <code>views.py</code>, função <code>novo_pedido()</code>.</p>
+    </div>
+</div>
+
+<div class="card" style="background:#fdf3ed;">
+    <h3 style="margin-bottom:10px;">💡 Como os padrões se integram</h3>
+    <ol style="padding-left:20px; line-height:1.8;">
+        <li>O <strong>Singleton</strong> fornece as configurações que influenciam o comportamento de todo o sistema.</li>
+        <li>A <strong>Factory</strong> cria o pedido do tipo correto, já com a lógica de cálculo de total embutida.</li>
+        <li>O <strong>Strategy</strong> processa o pagamento de acordo com a forma escolhida pelo cliente.</li>
+        <li>O <strong>Observer</strong> dispara notificações automáticas para todos os interessados quando o pedido muda de estado.</li>
+    </ol>
+</div>
+
+<a href="/" class="btn btn-primary">← Voltar para os Pedidos</a>
+{% endblock %}

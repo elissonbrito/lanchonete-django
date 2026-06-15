@@ -1,0 +1,7 @@
+[
+  {"model": "produtos.produto", "pk": 1, "fields": {"nome": "X-Burguer", "descricao": "Hambúrguer artesanal com queijo e alface", "preco": "18.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 2, "fields": {"nome": "X-Bacon", "descricao": "Hambúrguer com bacon crocante", "preco": "22.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 3, "fields": {"nome": "Suco de Laranja", "descricao": "Suco natural 300ml", "preco": "8.00", "categoria": "bebida", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 4, "fields": {"nome": "Refrigerante", "descricao": "Lata 350ml", "preco": "6.00", "categoria": "bebida", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 5, "fields": {"nome": "Batata Frita", "descricao": "Porção média crocante", "preco": "12.00", "categoria": "acompanhamento", "disponivel": true}}
+]

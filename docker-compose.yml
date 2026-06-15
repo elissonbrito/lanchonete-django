@@ -1,0 +1,75 @@
+
+# ─── Rede interna dos microsserviços ──────────────────────────────────────
+networks:
+  rede_lanchonete:
+    driver: bridge
+
+# ─── Volumes persistentes ─────────────────────────────────────────────────
+volumes:
+  dados_pedidos:
+  dados_cardapio:
+
+# ─── Serviços ─────────────────────────────────────────────────────────────
+services:
+
+  servico_cardapio:
+    build: ./servico_cardapio
+    container_name: lanchonete_cardapio
+    ports:
+      - "8002:8002"
+    volumes:
+      - dados_cardapio:/app/db
+    environment:
+      - DATABASE_URL=sqlite:////app/db/cardapio.sqlite3
+      - DJANGO_SECRET_KEY=chave-local-cardapio-trocar-em-producao
+      - DEBUG=True
+    networks:
+      - rede_lanchonete
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/api/produtos/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  servico_pedidos:
+    build: ./servico_pedidos
+    container_name: lanchonete_pedidos
+    ports:
+      - "8001:8001"
+    volumes:
+      - dados_pedidos:/app/db
+    environment:
+      - DATABASE_URL=sqlite:////app/db/pedidos.sqlite3
+      - DJANGO_SECRET_KEY=chave-local-pedidos-trocar-em-producao
+      - DEBUG=True
+      - URL_SERVICO_CARDAPIO=http://servico_cardapio:8002
+      - URL_SERVICO_NOTIFICACOES=http://servico_notificacoes:8003
+    networks:
+      - rede_lanchonete
+    depends_on:
+      - servico_cardapio
+      - servico_notificacoes
+
+  servico_notificacoes:
+    build: ./servico_notificacoes
+    container_name: lanchonete_notificacoes
+    ports:
+      - "8003:8003"
+    environment:
+      - DEBUG=True
+    networks:
+      - rede_lanchonete
+
+  gateway:
+    image: nginx:alpine
+    container_name: lanchonete_gateway
+    ports:
+      - "80:80"
+    volumes:
+      - ./gateway/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - rede_lanchonete
+    depends_on:
+      - servico_pedidos
+      - servico_cardapio
+      - servico_notificacoes

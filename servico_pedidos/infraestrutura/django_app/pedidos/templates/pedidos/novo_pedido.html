@@ -1,0 +1,67 @@
+{% extends "pedidos/base.html" %}
+
+{% block title %}Novo Pedido{% endblock %}
+
+{% block content %}
+<h2 style="margin-bottom:20px;">🛒 Novo Pedido</h2>
+
+<div class="card">
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="cliente">Nome do cliente</label>
+        <input type="text" id="cliente" name="cliente" placeholder="Ex: João Silva" required>
+
+        <label for="tipo">Tipo do pedido</label>
+        <select id="tipo" name="tipo" onchange="toggleMesa(this.value)">
+            <option value="balcao">Balcão (sem taxa)</option>
+            <option value="entrega">Entrega (+R$5,00)</option>
+            <option value="mesa">Mesa (sem taxa)</option>
+        </select>
+        <small style="color:#888; display:block; margin-top:-10px; margin-bottom:15px;">
+            → A <strong>Factory</strong> cria o objeto certo com base nessa escolha.
+        </small>
+
+        <div id="campo-mesa" style="display:none;">
+            <label for="numero_mesa">Número da mesa</label>
+            <input type="text" id="numero_mesa" name="numero_mesa" placeholder="Ex: 5">
+        </div>
+
+        <label for="forma_pagamento">Forma de pagamento</label>
+        <select id="forma_pagamento" name="forma_pagamento">
+            <option value="dinheiro">Dinheiro</option>
+            <option value="cartao">Cartão</option>
+            <option value="pix">Pix</option>
+        </select>
+        <small style="color:#888; display:block; margin-top:-10px; margin-bottom:15px;">
+            → O <strong>Strategy</strong> escolhe como processar o pagamento.
+        </small>
+
+        <label>Produtos</label>
+        <div class="checkbox-group" style="border:1px solid #eee; border-radius:5px; padding:10px; margin-bottom:15px;">
+            {% for produto in produtos %}
+            <label>
+                <input type="checkbox" name="produtos" value="{{ produto.pk }}">
+                {{ produto.nome }} — R${{ produto.preco }}
+            </label>
+            {% empty %}
+            <p style="color:#888;">Nenhum produto cadastrado. Acesse o <a href="/admin/">Admin</a> para adicionar.</p>
+            {% endfor %}
+        </div>
+
+        <small style="color:#888; display:block; margin-bottom:15px;">
+            Ao salvar, o <strong>Observer</strong> notificará automaticamente a cozinha e o cliente.
+        </small>
+
+        <button type="submit" class="btn btn-primary">Fazer Pedido</button>
+        <a href="/" style="margin-left:10px; color:#888;">Cancelar</a>
+    </form>
+</div>
+
+<script>
+function toggleMesa(tipo) {
+    document.getElementById("campo-mesa").style.display =
+        tipo === "mesa" ? "block" : "none";
+}
+</script>
+{% endblock %}

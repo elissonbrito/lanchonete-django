@@ -1,0 +1,7 @@
+[
+  {"model": "pedidos.produto", "pk": 1, "fields": {"nome": "X-Burguer", "preco": "15.00"}},
+  {"model": "pedidos.produto", "pk": 2, "fields": {"nome": "X-Bacon", "preco": "18.00"}},
+  {"model": "pedidos.produto", "pk": 3, "fields": {"nome": "Batata Frita", "preco": "10.00"}},
+  {"model": "pedidos.produto", "pk": 4, "fields": {"nome": "Refrigerante", "preco": "7.00"}},
+  {"model": "pedidos.produto", "pk": 5, "fields": {"nome": "Milk Shake", "preco": "14.00"}}
+]
