@@ -283,23 +283,19 @@ Cada microsserviço tem seu próprio `Dockerfile`. O `docker-compose.yml` na rai
 git init
 git add .
 git commit -m "lanchonete django - prova final"
-git remote add origin https://github.com/SEU_USUARIO/lanchonete-django.git
-git branch -M main
+git remote add origin https://github.com/elissonbrito/lanchonete-django.git
+git branch -M mainb
 git push -u origin main
 ```
 
-### 2 — Criar conta no Render
-
-Acesse **render.com** e clique em **Continue with GitHub**.
-
-### 3 — Criar o serviço
+### 2 — Criar o serviço
 
 1. No dashboard, clique em **New → Blueprint**
 2. Selecione o repositório `lanchonete-django`
 3. O Render lê o arquivo `render.yaml` e configura tudo automaticamente
 4. Clique em **Apply**
 
-### 4 — Variáveis de ambiente
+### 3 — Variáveis de ambiente utilizado para hospedar no Render
 
 O `render.yaml` já configura tudo automaticamente, incluindo:
 
@@ -312,13 +308,10 @@ O `render.yaml` já configura tudo automaticamente, incluindo:
 
 ### 5 — Após o deploy
 
-O Render gera uma URL no formato:
+O Render gerou uma URL no formato:
 ```
 https://lanchonete-pedidos.onrender.com
 ```
-
-> **Atenção — plano gratuito:** o serviço dorme após 15 minutos sem acesso. Na primeira requisição após o sono ele demora cerca de 30 segundos para responder. Isso é normal no plano free.
-
 ---
 
 ## 11. Justificativas técnicas
@@ -365,7 +358,7 @@ Caso não tenha Python, baixe em **python.org/downloads**. Marque a opção **"A
 
 **Linux / Mac / Windows:**
 ```bash
-git clone https://github.com/SEU_USUARIO/lanchonete-django.git
+git clone https://github.com/elissonbrito/lanchonete-django.git
 cd lanchonete-django
 ```
 
@@ -424,15 +417,15 @@ python manage.py collectstatic --noinput
 
 ---
 
-### 6 — Criar usuário administrador (opcional)
+### 6 — Foi criado um usuário administrador
 
 **Linux / Mac / Windows:**
 ```bash
 python manage.py createsuperuser
 ```
 
-Preencha usuário, e-mail e senha. O painel admin fica em **http://127.0.0.1:8000/admin**.
-
+usuário: admin
+senha: admin1234
 ---
 
 ### 7 — Subir o servidor
