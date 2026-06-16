@@ -7,7 +7,7 @@
 
 ## 1. Descrição do problema e proposta da solução
 
-Lanchonetes de médio porte enfrentam dificuldade em gerenciar pedidos simultâneos de balcão, mesa e entrega. Sem um sistema centralizado, erros de comunicação entre atendimento e cozinha geram atrasos, cobranças incorretas e insatisfação dos clientes.
+Lanchonetes de pequeno porte enfrentam dificuldade em gerenciar pedidos simultâneos de balcão, mesa e entrega. Sem um sistema centralizado, erros de comunicação entre atendimento e cozinha geram atrasos, cobranças incorretas e insatisfação dos clientes.
 
 **A solução proposta resolve:**
 
@@ -531,4 +531,4 @@ lanchonete_ms/
 
 ---
 
-> **Link de acesso ao sistema publicado:** inserir após o deploy
+> **Link de acesso ao sistema publicado:https://lanchonete-pedidos.onrender.com**

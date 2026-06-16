@@ -1,7 +1,40 @@
 [
-  {"model": "pedidos.produto", "pk": 1, "fields": {"nome": "X-Burguer", "preco": "15.00"}},
-  {"model": "pedidos.produto", "pk": 2, "fields": {"nome": "X-Bacon", "preco": "18.00"}},
-  {"model": "pedidos.produto", "pk": 3, "fields": {"nome": "Batata Frita", "preco": "10.00"}},
-  {"model": "pedidos.produto", "pk": 4, "fields": {"nome": "Refrigerante", "preco": "7.00"}},
-  {"model": "pedidos.produto", "pk": 5, "fields": {"nome": "Milk Shake", "preco": "14.00"}}
+[
+  {"model": "produtos.produto", "pk": 1, "fields": {"nome": "Hambúrguer", "descricao": "Pão, carne e salada", "preco": "10.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 2, "fields": {"nome": "X-Burguer", "descricao": "Pão, carne, queijo e salada", "preco": "12.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 3, "fields": {"nome": "Egg-Burguer", "descricao": "Pão, carne, ovo e salada", "preco": "12.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 4, "fields": {"nome": "X-Calabresa", "descricao": "Pão, carne, queijo, calabresa e salada", "preco": "14.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 5, "fields": {"nome": "X-Bacon", "descricao": "Pão, carne, queijo, bacon e salada", "preco": "14.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 6, "fields": {"nome": "Egg-Xburguer", "descricao": "Pão, carne, ovo, queijo e salada", "preco": "14.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 7, "fields": {"nome": "Duplo-X", "descricao": "Pão, 2 carnes, 2 queijos e salada", "preco": "15.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 8, "fields": {"nome": "Egg-Xcalabresa", "descricao": "Pão, carne, ovo, queijo, calabresa e salada", "preco": "15.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 9, "fields": {"nome": "Egg-Xbacon", "descricao": "Pão, carne, ovo, queijo, bacon e salada", "preco": "15.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 10, "fields": {"nome": "X-Frango", "descricao": "Pão, filé de frango, queijo e salada", "preco": "15.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 11, "fields": {"nome": "X-Tudo", "descricao": "Pão, carne, ovo, presunto, queijo, bacon e salada", "preco": "16.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 12, "fields": {"nome": "Egg-Xfrango", "descricao": "Pão, filé de frango, ovo, queijo e salada", "preco": "16.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 13, "fields": {"nome": "Big Completo", "descricao": "Pão, 2 carnes, ovo, presunto, queijo, bacon e salada", "preco": "18.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 14, "fields": {"nome": "X-Tudo Frango", "descricao": "Pão, filé de frango, ovo, presunto, queijo, bacon e salada", "preco": "18.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 15, "fields": {"nome": "X-Tudo Picanha", "descricao": "Pão, carne de hambúrguer de picanha, ovo, presunto, queijo, bacon e salada", "preco": "20.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 16, "fields": {"nome": "Big Picanha", "descricao": "Pão, 2 carnes de hambúrguer de picanha, ovo, presunto, queijo, bacon e salada", "preco": "25.00", "categoria": "lanche", "disponivel": true}},
+
+  {"model": "produtos.produto", "pk": 17, "fields": {"nome": "Cachorro-Quente Salsicha", "descricao": "Pão, molho, salsicha, ervilha, milho, ovo de codorna, passas, batata-palha, queijo ralado, queijo cheddar e ketchup", "preco": "12.00", "categoria": "lanche", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 18, "fields": {"nome": "Cachorro-Quente Linguiça", "descricao": "Pão, molho, linguiça, ervilha, milho, ovo de codorna, passas, batata-palha, queijo ralado, queijo cheddar e ketchup", "preco": "13.00", "categoria": "lanche", "disponivel": true}},
+
+  {"model": "produtos.produto", "pk": 19, "fields": {"nome": "Refrigerante Lata", "descricao": "Coca-Cola, Sprite, Fanta laranja ou uva, Guaraná Antarctica - comum ou zero", "preco": "6.00", "categoria": "bebida", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 20, "fields": {"nome": "Coca-Cola 2L", "descricao": "Coca-Cola ou Coca Zero - 2 litros", "preco": "15.00", "categoria": "bebida", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 21, "fields": {"nome": "Água Tônica Antarctica", "descricao": "Lata", "preco": "6.00", "categoria": "bebida", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 22, "fields": {"nome": "Água Gaseificada H2OH! Limoneto", "descricao": "", "preco": "7.00", "categoria": "bebida", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 23, "fields": {"nome": "Mineirinho 2L", "descricao": "Refrigerante 2 litros", "preco": "13.00", "categoria": "bebida", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 24, "fields": {"nome": "Guaraviton", "descricao": "", "preco": "6.00", "categoria": "bebida", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 25, "fields": {"nome": "Guaraná Natural", "descricao": "Copo", "preco": "3.00", "categoria": "bebida", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 26, "fields": {"nome": "Água com Gás", "descricao": "", "preco": "4.00", "categoria": "bebida", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 27, "fields": {"nome": "Água sem Gás", "descricao": "", "preco": "3.00", "categoria": "bebida", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 28, "fields": {"nome": "Brahma e Antarctica Latão", "descricao": "", "preco": "7.00", "categoria": "bebida", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 29, "fields": {"nome": "Heineken Latão", "descricao": "", "preco": "10.60", "categoria": "bebida", "disponivel": true}},
+
+  {"model": "produtos.produto", "pk": 30, "fields": {"nome": "Acréscimo Carne de Hambúrguer de Picanha", "descricao": "Por unidade", "preco": "5.00", "categoria": "acompanhamento", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 31, "fields": {"nome": "Acréscimo Filé de Frango", "descricao": "Por unidade", "preco": "4.00", "categoria": "acompanhamento", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 32, "fields": {"nome": "Acréscimo Carne de Hambúrguer", "descricao": "Por unidade", "preco": "2.00", "categoria": "acompanhamento", "disponivel": true}},
+  {"model": "produtos.produto", "pk": 33, "fields": {"nome": "Acréscimo Ovo/Bacon/Queijo/Presunto/Cheddar/Calabresa", "descricao": "Por unidade, cada item", "preco": "2.00", "categoria": "acompanhamento", "disponivel": true}}
+]
 ]

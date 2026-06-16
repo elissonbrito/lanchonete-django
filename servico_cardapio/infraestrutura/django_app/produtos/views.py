@@ -8,9 +8,13 @@ from .models import Produto
 @require_http_methods(["GET"])
 def listar_produtos(request):
     categoria = request.GET.get("categoria")
+    busca = request.GET.get("busca")
+
     produtos = Produto.objects.filter(disponivel=True)
     if categoria:
         produtos = produtos.filter(categoria=categoria)
+    if busca:
+        produtos = produtos.filter(nome__icontains=busca)
 
     dados = [
         {

@@ -9,6 +9,7 @@ class StatusPedido(str, Enum):
     PREPARANDO = "preparando"
     PRONTO     = "pronto"
     ENTREGUE   = "entregue"
+    PAGO       = "pago"
 
 
 class TipoPedido(str, Enum):
@@ -21,6 +22,7 @@ class FormaPagamento(str, Enum):
     DINHEIRO = "dinheiro"
     CARTAO   = "cartao"
     PIX      = "pix"
+    MUMBUCA  = "mumbuca"
 
 
 @dataclass
@@ -47,7 +49,9 @@ class Pedido:
     numero_mesa: int | None = None
     id: int | None = None
 
-    TAXA_ENTREGA = Decimal("5.00")
+    TAXA_ENTREGA = Decimal("5.00") 
+    """Valor fixo para pedidos de entrega, porque o local de entrega é no mesmo bairro.
+    ao expandir o atendimento, pode ser ajustado neste campo novos valores ou acrescentar bairros"""
 
     def calcular_total(self) -> Decimal:
         subtotal = sum(item.subtotal for item in self.itens)
@@ -62,6 +66,7 @@ class Pedido:
             StatusPedido.PREPARANDO,
             StatusPedido.PRONTO,
             StatusPedido.ENTREGUE,
+            StatusPedido.PAGO,
         ]
         indice_atual = fluxo.index(self.status)
         if indice_atual < len(fluxo) - 1:
@@ -69,3 +74,4 @@ class Pedido:
 
     def esta_finalizado(self) -> bool:
         return self.status == StatusPedido.ENTREGUE
+        return self.status == StatusPedido.PAGO
